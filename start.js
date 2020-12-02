@@ -1,4 +1,5 @@
 (() => {
+    var scorePoint = 0;
     var img = document.getElementById("scream");
     const canvas = document.getElementById('falling-swon-canvas');
     function setup(){
@@ -65,27 +66,52 @@
 
     const employeeName = document.getElementById('employeeName');
     const game = document.getElementById('game');
+    const score = document.getElementById('score');
+    const point = document.getElementById('point');
+    const rules = document.getElementById('rules');
 
     function onKeyDown(event){
         if(event.key === '1'){
             canvas.style.display = "none"
             game.style.display = 'block'
             employeeName.style.display = "none"
+            point.style.display = "none"
+            score.style.display = "none"
+            rules.style.display = "none"
         }else if(event.key === '2'){
             canvas.style.display = "none"
             game.style.display = 'none'
             employeeName.style.display = "none"
-        }else if(event.key === '3'){
-            
+            point.style.display = "none"
+            score.style.display = "none"
+            rules.style.display = "block"
+        }else if(event.key === '3'){ //clear score
+            scorePoint = 0
+            score.innerText = `SCORE : ${scorePoint}`
+            canvas.style.display = "none"
+            employeeName.style.display = "block"
+            game.style.display = 'none'
+            point.style.display = "none"
+            score.style.display = "block"
+            rules.style.display = "none"
+            nameRandom();
         }else if(event.key === 'r'){
             canvas.style.display = "none"
             employeeName.style.display = "block"
             game.style.display = 'none'
+            point.style.display = "none"
+            score.style.display = "block"
+            rules.style.display = "none"
             nameRandom();
         }else if(event.key === 'p'){
             canvas.style.display = "block"
+            point.style.display = "block"
+            score.style.display = "block"
             employeeName.style.display = "none"
-            game.style.display = 'none'
+            game.style.display = "none"
+            rules.style.display = "none"
+            scorePoint += 1
+            score.innerText = `SCORE : ${scorePoint}`
         }else if(event.key === 'f'){
             document.location.href = './index.html'
         }
