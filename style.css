@@ -12,6 +12,22 @@ body{
     transform: translate(-50%, -50%);
 }
 
+.ml4 {
+    position: relative;
+    font-weight: 900;
+    font-size: 4.5em;
+    color: white;
+    text-align: center;
+  }
+.ml4 .letters {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0.3em;
+    right: 0;
+    opacity: 0; 
+  }
+
 #rules {
     color: white;
     font-weight: bold;
@@ -25,7 +41,7 @@ body{
     font-size: 50px;
     font-weight: bold;
     font-family: cursive;
-    display: none;
+    opacity: 0;
 }
 
 #point {
@@ -82,7 +98,7 @@ body{
 }
 
 #employeeName{
-    display: none;
+    opacity: 0;
 }
 .game{
     color: white;

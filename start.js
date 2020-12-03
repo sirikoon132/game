@@ -74,40 +74,106 @@
         if(event.key === '1'){
             canvas.style.display = "none"
             game.style.display = 'block'
-            employeeName.style.display = "none"
+            employeeName.style.opacity = 0
             point.style.display = "none"
-            score.style.display = "none"
+            score.style.opacity = 0
             rules.style.display = "none"
         }else if(event.key === '2'){
             canvas.style.display = "none"
             game.style.display = 'none'
-            employeeName.style.display = "none"
+            employeeName.style.opacity = 0
             point.style.display = "none"
-            score.style.display = "none"
+            score.style.opacity = 0
             rules.style.display = "block"
         }else if(event.key === '3'){ //clear score
+
             scorePoint = 0
             score.innerText = `SCORE : ${scorePoint}`
+            
             canvas.style.display = "none"
-            employeeName.style.display = "block"
-            game.style.display = 'none'
+            game.style.display = "none"
             point.style.display = "none"
-            score.style.display = "block"
             rules.style.display = "none"
+            employeeName.style.opacity = 0
+            score.style.opacity = 0
+
+            var ml4 = {};
+            ml4.opacityIn = [0,1];
+            ml4.scaleIn = [0.2, 1];
+            ml4.scaleOut = 3;
+            ml4.durationIn = 800;
+            ml4.durationOut = 600;
+            ml4.delay = 500;
+
+            var animation =  anime.timeline({ loop: 1 })
+            .add({
+                targets: '.ml4 .letters-1',
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn
+            }).add({
+                targets: '.ml4 .letters-1',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            }).add({
+                targets: '.ml4 .letters-2',
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn
+            }).add({
+                targets: '.ml4 .letters-2',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            }).add({
+                targets: '.ml4 .letters-3',
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn
+            }).add({
+                targets: '.ml4 .letters-3',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay,
+            }).add({
+                targets: '.ml4',
+                opacity: 0,
+                duration: 500,
+                delay: 500
+            }).add({
+                targets: '#employeeName',
+                opacity: 1,
+                scale: [0.2, 1],
+                duration: 500
+            }).add({
+                targets: '#score',
+                opacity: 1,
+                scale: [0.2, 1],
+                duration: 500
+            })
+            // employeeName.style.display = "block"
+            // score.style.display = "block"
             nameRandom();
         }else if(event.key === 'r'){
             canvas.style.display = "none"
-            employeeName.style.display = "block"
+            employeeName.style.opacity = 1
             game.style.display = 'none'
             point.style.display = "none"
-            score.style.display = "block"
+            score.style.opacity = 1
             rules.style.display = "none"
             nameRandom();
         }else if(event.key === 'p'){
             canvas.style.display = "block"
             point.style.display = "block"
-            score.style.display = "block"
-            employeeName.style.display = "none"
+            score.style.opacity = 1
+            employeeName.style.opacity = 0
             game.style.display = "none"
             rules.style.display = "none"
             scorePoint += 1
