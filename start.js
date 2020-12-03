@@ -63,7 +63,7 @@
             document.getElementById("employee").innerHTML = random.name
         });
     }
-
+    
     const employeeName = document.getElementById('employeeName');
     const game = document.getElementById('game');
     const score = document.getElementById('score');

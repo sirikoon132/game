@@ -1,6 +1,7 @@
 body{
-    background-image: Url('./Dragon.jpg');
-    background-size: cover;
+    /* background-image: Url('./Dragon.jpg');
+    background-size: cover; */
+    background-color: black;
 }
 
 .centered {
@@ -83,7 +84,6 @@ body{
 #employeeName{
     display: none;
 }
-
 .game{
     color: white;
     /* text-align: center; */
