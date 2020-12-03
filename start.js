@@ -2,6 +2,8 @@
     var scorePoint = 0;
     var img = document.getElementById("scream");
     const canvas = document.getElementById('falling-swon-canvas');
+    const body = document.getElementById("body");
+
     function setup(){
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -69,6 +71,8 @@
     const score = document.getElementById('score');
     const point = document.getElementById('point');
     const rules = document.getElementById('rules');
+    const ready = document.getElementById('ready');
+    const fail = document.getElementById('fail');
 
     function onKeyDown(event){
         if(event.key === '1'){
@@ -96,6 +100,8 @@
             rules.style.display = "none"
             employeeName.style.opacity = 0
             score.style.opacity = 0
+            ready.style.opacity = 1
+            fail.style.opacity = 0
 
             var ml4 = {};
             ml4.opacityIn = [0,1];
@@ -164,6 +170,7 @@
         }else if(event.key === 'r'){
             canvas.style.display = "none"
             employeeName.style.opacity = 1
+            fail.style.opacity = 0
             game.style.display = 'none'
             point.style.display = "none"
             score.style.opacity = 1
@@ -172,6 +179,7 @@
         }else if(event.key === 'p'){
             canvas.style.display = "block"
             point.style.display = "block"
+            fail.style.opacity = 0
             score.style.opacity = 1
             employeeName.style.opacity = 0
             game.style.display = "none"
@@ -179,7 +187,40 @@
             scorePoint += 1
             score.innerText = `SCORE : ${scorePoint}`
         }else if(event.key === 'f'){
-            document.location.href = './index.html'
+            // document.body.style.backgroundColor = 'red';
+            scorePoint -= 1
+            score.innerText = `SCORE : ${scorePoint}`
+
+            canvas.style.display = "none"
+            game.style.display = "none"
+            point.style.display = "none"
+            rules.style.display = "none"
+            employeeName.style.opacity = 0
+            score.style.opacity = 0
+            fail.style.opacity = 1
+            
+            var ml5 = {};
+            ml5.opacityIn = [0,1];
+            ml5.scaleIn = [0.2, 1];
+            ml5.scaleOut = 3;
+            ml5.durationIn = 800;
+            ml5.durationOut = 600;
+            ml5.delay = 500;
+
+            anime.timeline({ loop: true })
+            .add({
+                targets: '.ml5 .letters-1',
+                opacity: ml5.opacityIn,
+                scale: ml5.scaleIn,
+                duration: ml5.durationIn
+            }).add({
+                targets: '.ml5 .letters-1',
+                opacity: 0,
+                scale: ml5.scaleOut,
+                duration: ml5.durationOut,
+                easing: "easeInExpo",
+                delay: ml5.delay
+            })
         }
     }
     function run(){

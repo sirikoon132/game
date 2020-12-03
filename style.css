@@ -28,6 +28,23 @@ body{
     opacity: 0; 
   }
 
+.ml5 {
+    position: relative;
+    font-weight: 900;
+    font-size: 4.5em;
+    color:red;
+    text-align: center;
+  }
+
+.ml5 .letters {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0.3em;
+    right: 0;
+    opacity: 0; 
+  }
+
 #rules {
     color: white;
     font-weight: bold;
@@ -109,3 +126,5 @@ body{
     font-family: cursive;
     display: none;
 }
+
+
