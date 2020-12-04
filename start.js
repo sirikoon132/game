@@ -187,7 +187,6 @@
             scorePoint += 1
             score.innerText = `SCORE : ${scorePoint}`
         }else if(event.key === 'f'){
-            // document.body.style.backgroundColor = 'red';
             scorePoint -= 1
             score.innerText = `SCORE : ${scorePoint}`
 
@@ -202,12 +201,12 @@
             var ml5 = {};
             ml5.opacityIn = [0,1];
             ml5.scaleIn = [0.2, 1];
-            ml5.scaleOut = 3;
+            ml5.scaleOut = 1;
             ml5.durationIn = 800;
             ml5.durationOut = 600;
             ml5.delay = 500;
 
-            anime.timeline({ loop: true })
+            anime.timeline({ loop: 1 })
             .add({
                 targets: '.ml5 .letters-1',
                 opacity: ml5.opacityIn,
@@ -215,12 +214,15 @@
                 duration: ml5.durationIn
             }).add({
                 targets: '.ml5 .letters-1',
-                opacity: 0,
+                opacity: 1,
                 scale: ml5.scaleOut,
                 duration: ml5.durationOut,
                 easing: "easeInExpo",
                 delay: ml5.delay
             })
+        }else if(event.key === '0'){
+            scorePoint -= 1
+            score.innerText = `SCORE : ${scorePoint}`
         }
     }
     function run(){

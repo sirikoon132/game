@@ -31,7 +31,7 @@ body{
 .ml5 {
     position: relative;
     font-weight: 900;
-    font-size: 4.5em;
+    font-size: 5em;
     color:red;
     text-align: center;
   }
@@ -40,7 +40,7 @@ body{
     position: absolute;
     margin: auto;
     left: 0;
-    top: 0.3em;
+    top: 2em;
     right: 0;
     opacity: 0; 
   }
