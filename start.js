@@ -56,15 +56,6 @@
             snowBall.forEach((snowBall) => moveSnowBall(canvas ,snowBall));
         }, 15)
     }
-
-    function nameRandom(){
-        fetch('data.json').then(
-            response => response.json()).then(data => {
-            // Do something with your data
-            var random = data[data.length * Math.random() << 0];
-            document.getElementById("employee").innerHTML = random.name
-        });
-    }
     
     const employeeName = document.getElementById('employeeName');
     const game = document.getElementById('game');
@@ -164,9 +155,8 @@
                 scale: [0.2, 1],
                 duration: 500
             })
-            // employeeName.style.display = "block"
-            // score.style.display = "block"
-            nameRandom();
+            console.clear();
+            var messenger = new Messenger($('#messenger'));
         }else if(event.key === 'r'){
             canvas.style.display = "none"
             employeeName.style.opacity = 1
@@ -175,7 +165,8 @@
             point.style.display = "none"
             score.style.opacity = 1
             rules.style.display = "none"
-            nameRandom();
+            console.clear();
+            var messenger = new Messenger($('#messenger'));
         }else if(event.key === 'p'){
             canvas.style.display = "block"
             point.style.display = "block"
@@ -195,7 +186,7 @@
             point.style.display = "none"
             rules.style.display = "none"
             employeeName.style.opacity = 0
-            score.style.opacity = 0
+            score.style.opacity = 1
             fail.style.opacity = 1
             
             var ml5 = {};
@@ -225,6 +216,72 @@
             score.innerText = `SCORE : ${scorePoint}`
         }
     }
+
+    var Messenger = function(el){
+        'use strict';
+        var m = this;
+        m.codeletters = "&#*+%?£@§$";
+        m.current_length = 0;
+        m.fadeBuffer = false;
+        m.init = function(){
+            fetch('data.json').then(
+                response => response.json()).then(data => {
+                m.message = data.length * Math.random() << 0;
+                m.messages = data
+                setTimeout(m.animateIn, 100);
+            });
+        };
+        m.generateRandomString = function(length){
+            var random_text = '';
+            while(random_text.length < length){
+            random_text += m.codeletters.charAt(Math.floor(Math.random()*m.codeletters.length));
+            } 
+            return random_text;
+        };
+        m.animateIn = function(){
+            if(m.current_length < m.messages[m.message].name.length){
+                m.current_length = m.current_length + 2;
+                if(m.current_length > m.messages[m.message].name.length) {
+                    m.current_length = m.messages[m.message].name.length;
+                }
+                var message = m.generateRandomString(m.current_length);
+                $(el).html(message);
+                
+                setTimeout(m.animateIn, 20);
+            } 
+            else { 
+                setTimeout(m.animateFadeBuffer, 20);
+            }
+        };
+        m.animateFadeBuffer = function(){
+            if(m.fadeBuffer === false){
+                m.fadeBuffer = [];
+                for(var i = 0; i < m.messages[m.message].name.length; i++){
+                    m.fadeBuffer.push({c: (Math.floor(Math.random()*12))+1, l: m.messages[m.message].name.charAt(i)});
+                }
+            }
+            var do_cycles = false;
+            var message = ''; 
+
+            for(var i = 0; i < m.fadeBuffer.length; i++){
+            var fader = m.fadeBuffer[i];
+                if(fader.c > 0){
+                    do_cycles = true;
+                    fader.c--;
+                    message += m.codeletters.charAt(Math.floor(Math.random()*m.codeletters.length));
+                } else {
+                    message += fader.l;
+                }
+            }
+            $(el).html(message);
+            
+            if(do_cycles === true){
+            setTimeout(m.animateFadeBuffer, 50);
+            } 
+        };
+        m.init();
+    }
+        
     function run(){
         document.addEventListener('keydown', onKeyDown);
         canvas.style.display = "none"
