@@ -4,6 +4,13 @@
     const canvas = document.getElementById('falling-swon-canvas');
     const body = document.getElementById("body");
     var randomEmp = [];
+    var category = [
+                    {'label':'Animal','json':'animal.json'}
+                    ,{'label':'Fruit','json':'fruit.json'}
+                    ,{'label':'Employee','json':'data.json'}
+                   ];
+    
+    var categorySelected = {};
 
     function setup(){
         canvas.width = window.innerWidth;
@@ -226,7 +233,7 @@
         m.current_length = 0;
         m.fadeBuffer = false;
         m.init = function(){
-            fetch('data.json').then(
+            fetch(categorySelected.json).then(
                 response => response.json()).then(data => {
                     let index = m.randomEmployee(data);
                     if(index != null){
@@ -302,11 +309,17 @@
         };
         m.init();
     }
+
+    function initCategory(index){
+        categorySelected = category[index];
+    }
         
     function run(){
         document.addEventListener('keydown', onKeyDown);
         canvas.style.display = "none"
         money();
+        initCategory(0);
+        $('#employeeName #msg.employee').text(categorySelected.label+' is')
     }
     run()
 })();
