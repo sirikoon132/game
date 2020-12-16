@@ -11,6 +11,9 @@
                    ];
     
     var categorySelected = {};
+    var timeLeft = 60;
+    var count = false;
+    var timerClass;
 
     function setup(){
         canvas.width = window.innerWidth;
@@ -72,6 +75,7 @@
     const rules = document.getElementById('rules');
     const ready = document.getElementById('ready');
     const fail = document.getElementById('fail');
+    const timer = document.getElementById('timer');
 
     function onKeyDown(event){
         if(event.key === '1'){
@@ -176,7 +180,14 @@
             rules.style.display = "none"
             console.clear();
             var messenger = new Messenger($('#messenger'));
+
+            if(!timerClass){
+                timerClass = new Countdown($('#timer'));
+            }
+            
+            count = true;
         }else if(event.key === 'p'){
+            count = false;
             canvas.style.display = "block"
             point.style.display = "block"
             fail.style.opacity = 0
@@ -187,6 +198,7 @@
             scorePoint += 1
             score.innerText = `SCORE : ${scorePoint}`
         }else if(event.key === 'f'){
+            count = false;
             scorePoint -= 1
             score.innerText = `SCORE : ${scorePoint}`
 
@@ -312,6 +324,19 @@
 
     function initCategory(index){
         categorySelected = category[index];
+    }
+
+    var Countdown = function(el){
+        var timer = document.getElementById('timer');
+        var timerId = setInterval(countdown, 1000);
+        
+        function countdown() {
+            if(count){
+                timer.innerText = `Time : ${timeLeft}`
+
+                timeLeft = timeLeft == 0 ? 0 : timeLeft-1;
+            }
+        }
     }
         
     function run(){
