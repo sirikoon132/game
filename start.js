@@ -11,6 +11,13 @@
                    ];
     
     var categorySelected = {};
+    var type = 0;
+    console.log(type);
+
+    function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
 
     function setup(){
         canvas.width = window.innerWidth;
@@ -314,7 +321,7 @@
         categorySelected = category[index];
     }
         
-    function run(){
+    function run(type){
         document.addEventListener('keydown', onKeyDown);
         canvas.style.display = "none"
         money();
