@@ -126,6 +126,9 @@ body{
 #employeeName{
     opacity: 0;
 }
+#category{
+  opacity: 0;
+}
 .game{
     color: white;
     /* text-align: center; */

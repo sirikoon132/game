@@ -5,15 +5,33 @@
     const body = document.getElementById("body");
     var randomEmp = [];
     var category = [
-                    {'label':'Animal','json':'animal.json'}
-                    ,{'label':'Fruit','json':'fruit.json'}
-                    ,{'label':'Employee','json':'data.json'}
+                    {'label':'แฟนดารา Hiso','json':'dara.json'}
+                    ,{'label':'จังหวัดในประเทศไทย','json':'country.json'}
+                    ,{'label':'ต่างประเทศ','json':'foreign.json'}
+                    ,{'label':'อาหาร','json':'food.json'}
+                    ,{'label':'ขนมหวาน','json':'dessert.json'}
+                    ,{'label':'สถานที่ Shopping','json':'shopping_mall.json'}
                    ];
     
     var categorySelected = {};
-    var timeLeft = 60;
+    var time = 60;
+    var timeLeft = time;
     var count = false;
     var timerClass;
+
+    document.getElementById("1").onclick = function() {initCategory(0); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
+    document.getElementById("2").onclick = function() {initCategory(1); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
+    document.getElementById("3").onclick = function() {initCategory(2); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
+    document.getElementById("4").onclick = function() {initCategory(3); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
+    document.getElementById("5").onclick = function() {initCategory(4); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
+    document.getElementById("6").onclick = function() {initCategory(5); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
+
 
     function setup(){
         canvas.width = window.innerWidth;
@@ -76,6 +94,8 @@
     const ready = document.getElementById('ready');
     const fail = document.getElementById('fail');
     const timer = document.getElementById('timer');
+    const categoryStyle = document.getElementById('category')
+    const thegame = document.getElementById('the-game');
 
     function onKeyDown(event){
         if(event.key === '1'){
@@ -85,6 +105,8 @@
             point.style.display = "none"
             score.style.opacity = 0
             rules.style.display = "none"
+            categoryStyle.style.opacity = 0
+            timer.style.opacity = 0
         }else if(event.key === '2'){
             canvas.style.display = "none"
             game.style.display = 'none'
@@ -92,20 +114,26 @@
             point.style.display = "none"
             score.style.opacity = 0
             rules.style.display = "block"
+            categoryStyle.style.opacity = 0
+            timer.style.opacity = 0
         }else if(event.key === '3'){ //clear score
-
+            timeLeft = 60;
+            count = false;
             scorePoint = 0
             score.innerText = `SCORE : ${scorePoint}`
             randomEmp = [];
             
             canvas.style.display = "none"
-            game.style.display = "none"
-            point.style.display = "none"
-            rules.style.display = "none"
+            game.style.opacity = 0
+            point.style.opacity = 0
+            rules.style.opacity = 0
+            categoryStyle.style.opacity = 0
             employeeName.style.opacity = 0
             score.style.opacity = 0
             ready.style.opacity = 1
             fail.style.opacity = 0
+            timer.style.opacity = 1
+            thegame.style.display = "block";
 
             var ml4 = {};
             ml4.opacityIn = [0,1];
@@ -168,8 +196,29 @@
                 scale: [0.2, 1],
                 duration: 500
             })
+
             console.clear();
             var messenger = new Messenger($('#messenger'));
+            setTimeout(() => {
+                console.log('time');
+                if(!timerClass){
+                    timerClass = new Countdown($('#timer'));
+                }
+                count = true;
+            }, 5500);
+            
+        }else if(event.key === '4'){
+            timeLeft = time;
+            categoryStyle.style.opacity = 1
+            canvas.style.display = "none"
+            game.style.opacity = 0
+            employeeName.style.opacity = 0
+            point.style.opacity = 0
+            score.style.opacity = 0
+            rules.style.opacity = 0
+            timer.style.opacity = 0
+            thegame.style.display = "none";
+
         }else if(event.key === 'r'){
             canvas.style.display = "none"
             employeeName.style.opacity = 1
@@ -184,7 +233,6 @@
             if(!timerClass){
                 timerClass = new Countdown($('#timer'));
             }
-            
             count = true;
         }else if(event.key === 'p'){
             count = false;
@@ -343,8 +391,7 @@
         document.addEventListener('keydown', onKeyDown);
         canvas.style.display = "none"
         money();
-        initCategory(0);
-        $('#employeeName #msg.employee').text(categorySelected.label+' is')
+        // initCategory(0);
     }
     run()
 })();
