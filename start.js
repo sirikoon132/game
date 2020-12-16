@@ -3,6 +3,7 @@
     var img = document.getElementById("scream");
     const canvas = document.getElementById('falling-swon-canvas');
     const body = document.getElementById("body");
+    var randomEmp = [];
 
     function setup(){
         canvas.width = window.innerWidth;
@@ -84,6 +85,7 @@
 
             scorePoint = 0
             score.innerText = `SCORE : ${scorePoint}`
+            randomEmp = [];
             
             canvas.style.display = "none"
             game.style.display = "none"
@@ -226,10 +228,29 @@
         m.init = function(){
             fetch('data.json').then(
                 response => response.json()).then(data => {
-                m.message = data.length * Math.random() << 0;
-                m.messages = data
-                setTimeout(m.animateIn, 100);
-            });
+                    let index = m.randomEmployee(data);
+                    if(index != null){
+                        m.message = index;
+                        m.messages = data
+                        setTimeout(m.animateIn, 100);
+                    }else{
+                        console.log("Game Over");
+                    }
+                });
+            };
+        m.randomEmployee = function(data){
+            if(data.length != randomEmp.length){
+                let rand = data.length * Math.random() << 0;
+                let index = randomEmp.findIndex(p => p == data[rand].name);
+                if(index == -1){
+                    randomEmp.push(data[rand].name);
+                    return rand;
+                }else{
+                    return m.randomEmployee(data);
+                }
+            }else{
+                return null;
+            }
         };
         m.generateRandomString = function(length){
             var random_text = '';
