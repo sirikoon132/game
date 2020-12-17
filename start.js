@@ -6,19 +6,19 @@
     var randomEmp = [];
     var category = [
                     {'label':'แฟนดารา Hiso','json':'dara.json'}
-                    ,{'label':'จังหวัดในประเทศไทย','json':'country.json'}
+                    ,{'label':'จังหวัดในประเทศไทย','json':'province.json'}
                     ,{'label':'ต่างประเทศ','json':'foreign.json'}
                     ,{'label':'อาหาร','json':'food.json'}
                     ,{'label':'ขนมหวาน','json':'dessert.json'}
                     ,{'label':'สถานที่ Shopping','json':'shopping_mall.json'}
+                    ,{'label':'Movies','json':'Movie.json'}
                    ];
     
     var categorySelected = {};
-    var time = 60;
+    var time = 120;
     var timeLeft = time;
     var count = false;
     var timerClass;
-    var gameOver;
 
     document.getElementById("1").onclick = function() {initCategory(0); 
     $('#employeeName #msg.employee').text(categorySelected.label+' is') };
@@ -32,7 +32,8 @@
     $('#employeeName #msg.employee').text(categorySelected.label+' is') };
     document.getElementById("6").onclick = function() {initCategory(5); 
     $('#employeeName #msg.employee').text(categorySelected.label+' is') };
-
+    document.getElementById("7").onclick = function() {initCategory(6); 
+    $('#employeeName #msg.employee').text(categorySelected.label+' is') };
 
     function setup(){
         canvas.width = window.innerWidth;
@@ -93,6 +94,7 @@
     const point = document.getElementById('point');
     const rules = document.getElementById('rules');
     const ready = document.getElementById('ready');
+    const over = document.getElementById('over');
     const fail = document.getElementById('fail');
     const timer = document.getElementById('timer');
     const categoryStyle = document.getElementById('category')
@@ -118,7 +120,7 @@
             categoryStyle.style.opacity = 0
             timer.style.opacity = 0
         }else if(event.key === '3'){ //clear score
-            timeLeft = 60;
+            timeLeft = time;
             count = false;
             scorePoint = 0
             score.innerText = `SCORE : ${scorePoint}`
@@ -133,7 +135,8 @@
             score.style.opacity = 0
             ready.style.opacity = 1
             fail.style.opacity = 0
-            timer.style.opacity = 1
+            over.style.opacity = 0
+            timer.style.opacity = 0
             thegame.style.display = "block";
 
             var ml4 = {};
@@ -196,6 +199,11 @@
                 opacity: 1,
                 scale: [0.2, 1],
                 duration: 500
+            }).add({
+                targets: '#timer',
+                opacity: 1,
+                scale: [0.2, 1],
+                duration: 500
             })
 
             console.clear();
@@ -205,11 +213,12 @@
                     timerClass = new Countdown($('#timer'));;
                 }
                 count = true;
-            }, 5500);
+            }, 6500);
             
         }else if(event.key === '4'){
             timeLeft = time;
             categoryStyle.style.opacity = 1
+            over.style.opacity = 0
             canvas.style.display = "none"
             game.style.opacity = 0
             employeeName.style.opacity = 0
@@ -223,6 +232,7 @@
             canvas.style.display = "none"
             employeeName.style.opacity = 1
             fail.style.opacity = 0
+            over.style.opacity = 0
             game.style.display = 'none'
             point.style.display = "none"
             score.style.opacity = 1
@@ -239,6 +249,7 @@
             canvas.style.display = "block"
             point.style.display = "block"
             fail.style.opacity = 0
+            over.style.opacity = 0
             score.style.opacity = 1
             employeeName.style.opacity = 0
             game.style.display = "none"
@@ -257,6 +268,7 @@
             employeeName.style.opacity = 0
             score.style.opacity = 1
             fail.style.opacity = 1
+            over.style.opacity = 0
             
             var ml5 = {};
             ml5.opacityIn = [0,1];
@@ -302,6 +314,39 @@
                         setTimeout(m.animateIn, 100);
                     }else{
                         console.log("Game Over");
+                        count = false;
+                        over.style.opacity = 1
+                        canvas.style.display = "none"
+                        game.style.display = 'none'
+                        employeeName.style.opacity = 0
+                        point.style.display = "none"
+                        score.style.opacity = 1
+                        rules.style.display = "none"
+                        categoryStyle.style.opacity = 0
+                        timer.style.opacity = 1
+
+                        var ml6 = {};
+                        ml6.opacityIn = [0,1];
+                        ml6.scaleIn = [0.2, 1];
+                        ml6.scaleOut = 1;
+                        ml6.durationIn = 800;
+                        ml6.durationOut = 600;
+                        ml6.delay = 500;
+
+                        anime.timeline({ loop: 1 })
+                        .add({
+                            targets: '.ml6 .letters-1',
+                            opacity: ml6.opacityIn,
+                            scale: ml6.scaleIn,
+                            duration: ml6.durationIn
+                        }).add({
+                            targets: '.ml6 .letters-1',
+                            opacity: 1,
+                            scale: ml6.scaleOut,
+                            duration: ml6.durationOut,
+                            easing: "easeInExpo",
+                            delay: ml6.delay
+                        })
                     }
                 });
             };
@@ -382,10 +427,45 @@
             if(count){
                 timer.innerText = `Time : ${timeLeft}`
 
-                timeLeft = timeLeft == 0 ? 0 : timeLeft-1;
+                if(timeLeft == 0){
+                    count = false;
+                    over.style.opacity = 1
+                    canvas.style.display = "none"
+                    game.style.display = 'none'
+                    employeeName.style.opacity = 0
+                    point.style.display = "none"
+                    score.style.opacity = 1
+                    rules.style.display = "none"
+                    categoryStyle.style.opacity = 0
+                    timer.style.opacity = 1
+
+                    var ml6 = {};
+                    ml6.opacityIn = [0,1];
+                    ml6.scaleIn = [0.2, 1];
+                    ml6.scaleOut = 1;
+                    ml6.durationIn = 800;
+                    ml6.durationOut = 600;
+                    ml6.delay = 500;
+
+                    anime.timeline({ loop: 1 })
+                    .add({
+                        targets: '.ml6 .letters-1',
+                        opacity: ml6.opacityIn,
+                        scale: ml6.scaleIn,
+                        duration: ml6.durationIn
+                    }).add({
+                        targets: '.ml6 .letters-1',
+                        opacity: 1,
+                        scale: ml6.scaleOut,
+                        duration: ml6.durationOut,
+                        easing: "easeInExpo",
+                        delay: ml6.delay
+                    })
+                }else{
+                    timeLeft--;
+                }
             }
         }
-        console.log('game Over: ', gameOver);
     }
         
     function run(){

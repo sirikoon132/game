@@ -9,11 +9,13 @@
 </head>
 <body>
     <img id="scream" src="./minimoney.png" width="0.5" height="0.5" hidden>
-      
-    <div id="score" class="mx-5">SCORE : 0</div>
-    <div id="point" class="fade-in" >+1</div>
-    <div id="timer" class="mx-5"></div>
-
+    
+    <div id="header">
+        <div id="score" class="mx-5">SCORE : 0</div>
+        <div id="point" class="fade-in" >+1</div>
+        <div id="timer" class="mx-5"></div>
+    </div>
+    
     <canvas id='falling-swon-canvas'></canvas>
 
     <h1 id="ready" class="ml4">
@@ -26,14 +28,19 @@
         <span class="letters letters-1">YOU FAIL !</br>-1</span>
     </h1>
 
+    <h1 id="over" class="ml6">
+        <span class="letters letters-1">G A M E O V E R</span>
+    </h1>
+
     <div id="category" style="text-align: center;">
-        <h1 class="category" style="font-weight: bold;">Category</h1>
-        <button class="button" id="1" style="vertical-align:middle"><span>แฟนดารา Hiso</span></button>
-        <button class="button" id="2" style="vertical-align:middle"><span>จังหวัดในประเทศไทย </span></button>
+        <h1 class="category" style="font-weight: bold; padding-bottom: 50px;">หมวดหมู่</h1>
+        <button class="button" id="1" style="vertical-align:middle"><span>ดารา </span></button>
+        <button class="button" id="2" style="vertical-align:middle"><span>จังหวัด</span></button>
         <button class="button" id="3" style="vertical-align:middle"><span>ต่างประเทศ </span></button>
         <button class="button" id="4" style="vertical-align:middle"><span>อาหาร </span></button>
         <button class="button" id="5" style="vertical-align:middle"><span>ขนมหวาน </span></button>
-        <button class="button" id="6" style="vertical-align:middle"><span>สถานที่ Shopping </span></button>
+        <button class="button" id="6" style="vertical-align:middle"><span>ห้าง </span></button>
+        <button class="button" id="7" style="vertical-align:middle"><span>หนัง </span></button>
     </div>
 
     <div id="the-game" class="container-fluid text-center centered">
@@ -45,7 +52,16 @@
             <p class="game" id="game">Mini Game</p>
         </div>
         <div id="rules">
-            <h2 class="rule-title">Rules</h2>
+            <h1 class="rule-title">Rules</h1>
+            <h2 class=" rule text-left">
+                1. ส่งตัวแทนแผนก (AHEAD, SAMS, Channel Oracle, Channel Microsoft) ทีมละ 3 คน 
+            </h2><br>
+            <h2 class="rule text-left">
+                2. ให้แต่ละทีมจับฉลากเลือกหมวดหมู่
+            </h2><br>
+            <h2 class="rule text-left">
+                3. แต่ละทีมต้องเลือกคนทายคำ 1 คน และคนใบ้ 2 คน
+            </h2>
         </div>
     </div>
 

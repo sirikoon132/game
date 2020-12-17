@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 body{
     /* background-image: Url('./Dragon.jpg');
     background-size: cover; */
-    background-color: #b49b57;
+    background-color: #46178f;
+    font-family: 'Itim', cursive, 'Open Sans', Arial, sans-serif;
 }
 
 .centered {
@@ -32,7 +34,7 @@ body{
     position: relative;
     font-weight: 900;
     font-size: 5em;
-    color:red;
+    color:#e00027;
     text-align: center;
   }
 
@@ -45,10 +47,26 @@ body{
     opacity: 0; 
   }
 
+.ml6 {
+  position: relative;
+  font-weight: 900;
+  font-size: 5em;
+  color:white;
+  text-align: center;
+}
+
+.ml6 .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 2em;
+  right: 0;
+  opacity: 0; 
+}
+
 #rules {
     color: white;
     font-weight: bold;
-    font-family: cursive;
     display: none;
 }
 
@@ -57,7 +75,6 @@ body{
     text-align: right;
     font-size: 50px;
     font-weight: bold;
-    font-family: cursive;
     opacity: 0;
 }
 
@@ -66,7 +83,6 @@ body{
     text-align: right;
     font-size: 50px;
     font-weight: bold;
-    font-family: cursive;
     /* opacity: 0; */
 }
 
@@ -79,7 +95,6 @@ body{
     text-align: center;
     font-size: 500px;
     font-weight: bold;
-    font-family: cursive;
     display: none;
 }
 
@@ -120,7 +135,6 @@ body{
     /* text-align: center; */
     font-size: 80px;
     font-weight: bold;
-    font-family: cursive;
 }
 
 #employeeName{
@@ -135,16 +149,15 @@ body{
     /* padding: 100px; */
     font-size: 150px;
     font-weight: bold;
-    font-family: cursive;
     display: none;
 }
 
 .button {
     display: inline-block;
     border-radius: 4px;
-    background-color: #008CBA;
+    background-color: #ffa500;
     border: none;
-    color: #FFFFFF;
+    color: black;
     text-align: center;
     font-size: 28px;
     padding: 15px;
@@ -159,7 +172,6 @@ body{
     display: inline-block;
     position: relative;
     transition: 0.5s;
-    font-family: cursive;
   }
   
   .button span:after {
@@ -182,7 +194,6 @@ body{
 
   .category{
       color: white;
-      font-family: cursive;
   }
 
   .gameOver{
@@ -190,4 +201,12 @@ body{
     color: white;
     text-align: center;
     text-size-adjust: 25px;
+  }
+  .rule{
+    margin-left: 100px;
+    font-size: 3rem;
+  }
+  .rule-title{
+    margin-bottom: 50px;
+    font-size: 5rem;
   }

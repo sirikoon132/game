@@ -1,47 +1,65 @@
 [
-        {
-            "name": "Siam Center"
-        },
-        {
-            "name": "Siam Discovery"
-        },
-        {
-            "name": "Siam Paragon"
-        },
-        {
-            "name": "Gaysorn Plaza"
-        },
-        {
-            "name": "Amarin Plaza"
-        },
-        {
-            "name": "Central Word"
-        },
-        {
-            "name": "Icon Siam"
-        },
-        {
-            "name": "King Power"
-        },
-        {
-            "name": "Central Embassy"
-        },
-        {
-            "name": "MBK"
-        },
-        {
-            "name": "จตุจักร"
-        },
-        {
-            "name": "Asiatique"
-        },
-        {
-            "name": "Siam Premium Outlet"
-        },
-        {
-            "name": "Mega Bangna"
-        },
-        {
-            "name": "Central Westgate"
-        }
-    ]
+    {
+        "name": "Siam Center"
+    },
+    {
+        "name": "Siam Discovery"
+    },
+    {
+        "name": "Siam Paragon"
+    },
+    {
+        "name": "Gaysorn Plaza"
+    },
+    {
+        "name": "Amarin Plaza"
+    },
+    {
+        "name": "Central World"
+    },
+    {
+        "name": "Icon Siam"
+    },
+    {
+        "name": "King Power"
+    },
+    {
+        "name": "Central Embassy"
+    },
+    {
+        "name": "MBK"
+    },
+    {
+        "name": "จตุจักร"
+    },
+    {
+        "name": "Asiatique"
+    },
+    {
+        "name": "Siam Premium Outlet"
+    },
+    {
+        "name": "Mega Bangna"
+    },
+    {
+        "name": "Central Westgate"
+    },
+    {
+        "name": "Don Don Donki"
+    },
+    {
+        "name": "Seacon"
+    },
+    {
+        "name": "Esplanade"
+    },
+    {
+        "name": "The mall บางกะปิ"
+    },
+    {
+        "name": "Center one"
+    },
+    {
+        "name": "Season"
+    }
+]
