@@ -184,3 +184,10 @@ body{
       color: white;
       font-family: cursive;
   }
+
+  .gameOver{
+    background-color: black;
+    color: white;
+    text-align: center;
+    text-size-adjust: 25px;
+  }

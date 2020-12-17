@@ -18,6 +18,7 @@
     var timeLeft = time;
     var count = false;
     var timerClass;
+    var gameOver;
 
     document.getElementById("1").onclick = function() {initCategory(0); 
     $('#employeeName #msg.employee').text(categorySelected.label+' is') };
@@ -200,9 +201,8 @@
             console.clear();
             var messenger = new Messenger($('#messenger'));
             setTimeout(() => {
-                console.log('time');
                 if(!timerClass){
-                    timerClass = new Countdown($('#timer'));
+                    timerClass = new Countdown($('#timer'));;
                 }
                 count = true;
             }, 5500);
@@ -385,6 +385,7 @@
                 timeLeft = timeLeft == 0 ? 0 : timeLeft-1;
             }
         }
+        console.log('game Over: ', gameOver);
     }
         
     function run(){
