@@ -11,7 +11,7 @@
                     ,{'label':'อาหาร','json':'food.json'}
                     ,{'label':'ขนมหวาน','json':'dessert.json'}
                     ,{'label':'สถานที่ Shopping','json':'shopping_mall.json'}
-                    ,{'label':'Movies','json':'Movie.json'}
+                    ,{'label':'Movies','json':'movie.json'}
                    ];
     
     var categorySelected = {};
