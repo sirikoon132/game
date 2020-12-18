@@ -5,7 +5,7 @@
     const body = document.getElementById("body");
     var randomEmp = [];
     var category = [
-                    {'label':'แฟนดารา Hiso','json':'dara.json'}
+                    {'label':'ดารา','json':'dara.json'}
                     ,{'label':'จังหวัดในประเทศไทย','json':'province.json'}
                     ,{'label':'ต่างประเทศ','json':'foreign.json'}
                     ,{'label':'อาหาร','json':'food.json'}
